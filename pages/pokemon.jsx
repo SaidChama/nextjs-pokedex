@@ -1,6 +1,9 @@
 import Layout from "../components/Layout"
+import AbilitiesList from "../components/AbilitiesList"
 import TypesList from "../components/TypesList"
 import Link from 'next/link'
+import { firstUpper } from '../src/script/format.js'
+
 
 export default function pokemon({ pokemon, abilities, types }) {
     return (
@@ -11,12 +14,7 @@ export default function pokemon({ pokemon, abilities, types }) {
             <div className="flex">
                 <img src={pokemon.sprites.versions['generation-vii']['ultra-sun-ultra-moon'].front_default} alt="" />
                 <div className="flex flex-col">
-                    {abilities.map((id, index) => (
-                        id.is_hidden ?
-                        <li className="capitalize" key={index}>Hidden: {removeSpecialChars(id.ability.name)}</li>                
-                        :
-                        <li className="capitalize" key={index}>Ability {index + 1}: {removeSpecialChars(id.ability.name)}</li>
-                    ))}
+                    <AbilitiesList abilities={abilities} />
                     <TypesList types={types} />
                     <h1>Height: {pokemon.height} ft</h1>
                     <h1>Weight: {pokemon.weight} lb</h1>
@@ -26,7 +24,7 @@ export default function pokemon({ pokemon, abilities, types }) {
             <Link href="/">
                 <a>
                     Voltar
-            </a>
+                </a>
             </Link>
         </Layout>
     )
@@ -53,12 +51,4 @@ export async function getServerSideProps({ query }) {
             types
         }
     };
-}
-
-function firstUpper(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1)
-}
-
-function removeSpecialChars(str) {
-    return str.replace('-', ' ')
 }
