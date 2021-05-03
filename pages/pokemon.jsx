@@ -1,7 +1,6 @@
 import Layout from "../components/Layout"
-import Type from "../components/Type"
+import TypesList from "../components/TypesList"
 import Link from 'next/link'
-import Types from "../styles/types.module.css"
 
 export default function pokemon({ pokemon, abilities, types }) {
     return (
@@ -12,15 +11,13 @@ export default function pokemon({ pokemon, abilities, types }) {
             <div className="flex">
                 <img src={pokemon.sprites.versions['generation-vii']['ultra-sun-ultra-moon'].front_default} alt="" />
                 <div className="flex flex-col">
-                {abilities.map((id, index) => (
+                    {abilities.map((id, index) => (
                         id.is_hidden ?
                         <li className="capitalize" key={index}>Hidden: {removeSpecialChars(id.ability.name)}</li>                
                         :
                         <li className="capitalize" key={index}>Ability {index + 1}: {removeSpecialChars(id.ability.name)}</li>
                     ))}
-                    {types.map((type, index) => (
-                        <Type key={index} type={type}/>
-                    ))}
+                    <TypesList types={types} />
                     <h1>Height: {pokemon.height} ft</h1>
                     <h1>Weight: {pokemon.weight} lb</h1>
                 </div>
