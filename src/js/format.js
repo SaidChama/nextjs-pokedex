@@ -12,9 +12,9 @@ function pokemonNameFormat(name) {
     
     switch(name[0]) {
         case 'nidoran':
-            return `${name[0]} ${name[1]}`
+            return `${firstUpper(name[0])} ${firstUpper(name[1])}`
         case 'mime':
-            return `${name[0]} ${name[1]}.`
+            return `${firstUpper(name[0])} ${firstUpper(name[1])}.`
         default: 
             return name[0]
     }
