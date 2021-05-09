@@ -1,16 +1,16 @@
 import Layout from "../components/Layout"
 import Type from "../components/Type"
 import Link from 'next/link'
-import Types from "../styles/types.module.css"
+import { removeSpecialChars, firstUpper, pokemonNameFormat } from "../src/js/format.js"
 
 export default function pokemon({ pokemon, abilities, types }) {
     return (
-        <Layout title={firstUpper(pokemon.name)}>
+        <Layout title={firstUpper(pokemonNameFormat(pokemon.name))}>
             <h1 className="text-center font-semibold text-5xl capitalize">
-                {pokemon.name}
+                {pokemonNameFormat(pokemon.name)}
             </h1>
             <div className="flex">
-                <img src={pokemon.sprites.versions['generation-vii']['ultra-sun-ultra-moon'].front_default} alt="" />
+                <img src={pokemon.sprites.versions['generation-vii']['ultra-sun-ultra-moon'].front_default} alt={pokemon.name} />
                 <div className="flex flex-col">
                 {abilities.map((id, index) => (
                         id.is_hidden ?
@@ -56,12 +56,4 @@ export async function getServerSideProps({ query }) {
             types
         }
     };
-}
-
-function firstUpper(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1)
-}
-
-function removeSpecialChars(str) {
-    return str.replace('-', ' ')
 }
