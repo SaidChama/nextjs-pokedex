@@ -2,21 +2,63 @@ import Layout from "../components/Layout"
 import Link from 'next/link'
 import Type from "../components/Type"
 import { pokemonNameFormat } from "../src/js/format.js"
-import PokeCard from '../styles/pokeCard.module.css'
-import Pokeball from '../components/ShadowPokeballBg'
-import Image from 'next/image'
-
-
-import React from 'react'
+import PokeCard from "../styles/pokeCard.module.css"
+import Pokeball from "../components/ShadowPokeballBg"
+import Image from "next/image"
+import InfiniteScroll from "react-infinite-scroll-component"
+import { useState, useEffect } from "react"
 
 export default function Home({ pokemons }) {
+    const [ pokes, setPokes ] = useState(pokemons)
+    const [ hasMore, setHasMore] = useState(true)
+
+    const getMorePokes = async() => {
+        const limit = pokes.length == 480 ? 13 : 24
+
+        const res = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${pokes.length}`)
+        let newRes  = await res.json()
+        newRes = newRes.results
+        const newPokes = await Promise.all(newRes.map(async (result, index) => {
+            const pokeId = index + pokes.length + 1
+            const url = result.url
+            let pokemon = await fetch(url)
+            pokemon = await pokemon.json()
+            const image = pokemon.sprites.versions['generation-vii']['ultra-sun-ultra-moon'].front_default
+            const typeList = pokemon.types.map((obj) => {
+                return obj.type.name
+            })
+            return {
+                ...result,
+                pokeId,
+                image,
+                index,
+                typeList
+            }
+        }))
+        setPokes(pokes => [...pokes, ...newPokes])
+    }
+
+    useEffect(() => {
+        setHasMore(pokes.length >= 493 ? false : true)
+    }, [pokes])
+
     return (
+
         <Layout title="NextJS Pokedex">
             <h1 className="text-center">
-                APRENDENDO A USAR REACT E NEXT COM UMA POKEDEX
-          </h1>
-            <ul className="flex flex-wrap justify-center">
-                {pokemons.map((pokemon, index) => (
+                APRENDENDO A USAR REACT E NEXT COM UMA POKEDEX                
+            </h1>
+                <ul className="flex flex-wrap justify-center">
+                <InfiniteScroll
+                    dataLength = {pokes.length}
+                    next={getMorePokes}
+                    hasMore={hasMore}
+                    loader={<div className="w-80 flex items-start justify-center">
+                        <Image src='/images/loading.gif' width={150} height={150} alt="Loading..." />
+                    </div>}                    
+                    style={{display: 'flex', flexWrap:'wrap', alignItems: 'center', justifyContent: 'center'}}
+                    >
+                {pokes.map((pokemon, index) => (
                     <li key={pokemon.pokeId} className="bg-white w-80 my-2 mx-2 box-border">
                         <div className="bg-gray-100 h-52 flex content-center justify-center border border-black rounded-3xl overflow-hidden">
                             <Link href={`/pokemon?id=${pokemon.pokeId}`}>
@@ -40,13 +82,14 @@ export default function Home({ pokemons }) {
                         </div>
                     </li>
                 ))}
+                </InfiniteScroll>
             </ul>
         </Layout>
     )
 }
 
 export async function getStaticProps(context) {
-    const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=20')
+    const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=24&offset=0')
     const { results } = await res.json()
     const pokemons = await Promise.all(results.map(async (result, index) => {
         const pokeId = index + 1
