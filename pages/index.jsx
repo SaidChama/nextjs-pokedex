@@ -49,7 +49,6 @@ export default function Home({ pokemons }) {
     }
 
     return (
-
         <Layout title="NextJS Pokedex">
             <h1 className="text-center">
                 APRENDENDO A USAR REACT E NEXT COM UMA POKEDEX                

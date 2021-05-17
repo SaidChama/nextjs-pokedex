@@ -1,7 +1,8 @@
 import Layout from "../components/Layout"
 import AbilitiesList from "../components/AbilitiesList"
 import TypesList from "../components/TypesList"
-import Link from 'next/link'
+import Link from "next/link"
+import PokeTabs from "../components/PokeTabs"
 import { firstUpper, pokemonNameFormat } from "../src/js/format.js"
 
 
@@ -26,6 +27,7 @@ export default function pokemon({ pokemon, abilities, types }) {
                     Voltar
                 </a>
             </Link>
+            <PokeTabs />
         </Layout>
     )
 }
