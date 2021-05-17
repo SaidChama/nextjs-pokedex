@@ -1,4 +1,4 @@
-import { removeSpecialChars } from '../src/script/format.js'
+import { removeSpecialChars } from '../src/js/format.js'
 
 export default function AbilitiesList({abilities}) {
     return (

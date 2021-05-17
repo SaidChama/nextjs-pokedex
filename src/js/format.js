@@ -8,6 +8,7 @@ function removeSpecialChars(str) {
 }
 
 function pokemonNameFormat(name) {
+    console.log(name)
     name = name.split('-')
     
     switch(name[0]) {
