@@ -1,5 +1,10 @@
+.tab {
+    border-bottom: solid 3px gray;
+    width: 40px;
+}
+
 .tabActive {
-    border-bottom: solid 3px black;
+    border-bottom: solid 2px rgb(66, 66, 66);
     animation-name: tabAppear;
     animation-duration: 0.6s;
     width: 40px;
@@ -24,7 +29,7 @@
     }
     to {
         opacity: 1;
-        width: 20;
+        width: 40;
     }
 }
 
