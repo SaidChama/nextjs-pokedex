@@ -44,11 +44,11 @@ export default function pokemon({ pokemon, abilities, types, species }) {
                         <div className={`absolute mb-36 mr-32 ${PokeCard[types[0]]}`}>
                             <Pokeball />
                         </div>
-                        <div className="absolute">
+                        <div className="absolute mr-28">
                             <Image src={pokemon.sprites.versions['generation-vii']['ultra-sun-ultra-moon'].front_default} alt={pokemon.name} 
                                 height={200} width={200}/>
                         </div>
-                        <div className="absolute ml-72">
+                        <div className="absolute ml-64">
                             <TypesList types={types} />
                         </div>
                     </div>
