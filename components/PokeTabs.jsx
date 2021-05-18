@@ -11,7 +11,7 @@ export default function PokeTabs({weight, height, abilities, description}) {
     }
     return (
 
-        <div className="flex flex-col border rounded-3xl w-96 flex-wrap">
+        <div className="flex flex-col w-96 flex-wrap shadow-lg border-box p-5 bg-white border rounded-b-3xl">
             <div className="tabs-header bg-white flex mb-5 justify-around items-end">
                 <div className="w-20 flex flex-col justify-center items-center cursor-pointer" onClick={() => toggleTab(1)}>
                     <div className={`mx-1 `} >Description</div>
@@ -31,7 +31,7 @@ export default function PokeTabs({weight, height, abilities, description}) {
                 </div>
             </div>
             <div className={`${TabStyle.content} ${toggleState === 1 ? TabStyle.contentActive : ''}`}>
-                <p>{description}</p>
+                <p className="text-justify">{description}</p>
             </div>
             <div className={`${TabStyle.content} ${toggleState === 2 ? TabStyle.contentActive : ''}`}>
                 <p>Height: {height} ft</p>

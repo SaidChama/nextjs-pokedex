@@ -1,9 +1,12 @@
 import Layout from "../components/Layout"
-import AbilitiesList from "../components/AbilitiesList"
 import TypesList from "../components/TypesList"
 import Link from "next/link"
+import Image from "next/image"
 import PokeTabs from "../components/PokeTabs"
-import { firstUpper, pokemonNameFormat } from "../src/js/format.js"
+import PokeCard from "../styles/pokeCard.module.css"
+import Pokeball from "../components/ShadowPokeballBg"
+import { IoChevronBackOutline } from "react-icons/io5"
+import { numberFormat, firstUpper, pokemonNameFormat } from "../src/js/format.js"
 
 
 export default function pokemon({ pokemon, abilities, types, species }) {
@@ -25,15 +28,31 @@ export default function pokemon({ pokemon, abilities, types, species }) {
 
     return (
         <Layout title={firstUpper(pokemonNameFormat(pokemon.name))}>
-            <h1 className="text-center font-semibold text-5xl capitalize">
-                {pokemonNameFormat(pokemon.name)}
-            </h1>
-            <div className="flex flex-col justify-center items-center">
-                <div>
-
+            <div className="flex flex-col items-center justify-center">
+                <div className={`flex flex-col justify-between w-96 border rounded-t-3xl shadow-lg ${PokeCard[types[0]]}`}>
+                    <div className="flex items-center justify-around h-16">
+                        <div className="mt-2 border-white border-0 rounded-md hover:border-2">
+                            <Link href="/">
+                                <a className="text-white font-bold text-3xl "><IoChevronBackOutline /></a>
+                            </Link>
+                        </div>
+                        <h1 className="text-center font-semibold text-4xl capitalize text-white z-20">
+                            {pokemonNameFormat(pokemon.name)} #{numberFormat(pokemon.id)}
+                        </h1>
+                    </div>
+                    <div className="h-48 flex items-center justify-center">
+                        <div className={`absolute mb-36 mr-32 ${PokeCard[types[0]]}`}>
+                            <Pokeball />
+                        </div>
+                        <div className="absolute">
+                            <Image src={pokemon.sprites.versions['generation-vii']['ultra-sun-ultra-moon'].front_default} alt={pokemon.name} 
+                                height={200} width={200}/>
+                        </div>
+                        <div className="absolute ml-72">
+                            <TypesList types={types} />
+                        </div>
+                    </div>
                 </div>
-                <img src={pokemon.sprites.versions['generation-vii']['ultra-sun-ultra-moon'].front_default} alt={pokemon.name} />
-                    <TypesList types={types} />
                 <div className="flex flex-col items-center">
                     <PokeTabs 
                         weight={pokemon.weight}
@@ -42,12 +61,6 @@ export default function pokemon({ pokemon, abilities, types, species }) {
                         description={species.flavor_text_entries[textId(pokemon.id)].flavor_text}/>
                 </div>
             </div>
-
-            {/* <Link href="/">
-                <a>
-                    Voltar
-                </a>
-            </Link> */}
 
         </Layout>
     )

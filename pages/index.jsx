@@ -1,6 +1,6 @@
 import Layout from "../components/Layout"
 import Link from 'next/link'
-import { pokemonNameFormat } from "../src/js/format.js"
+import { numberFormat, pokemonNameFormat } from "../src/js/format.js"
 import PokeCard from "../styles/pokeCard.module.css"
 import Pokeball from "../components/ShadowPokeballBg"
 import Image from "next/image"
@@ -78,7 +78,7 @@ export default function Home({ pokemons }) {
                             <Link href={`/pokemon?id=${pokemon.pokeId}`}>
                                 <a className={`flex items-center justify-around h-full w-full ${PokeCard[pokemon.typeList[0]]}`}>
                                     <div className="flex flex-col justify-start items-start h-28 box-border z-10">
-                                        <p className="capitalize text-white font-semibold text-2xl"><span className="font-bold text-white">{pokemon.pokeId}.</span> {pokemonNameFormat(pokemon.name)}</p>
+                                        <p className="capitalize text-white font-semibold text-2xl"><span className="font-bold text-white">{numberFormat(pokemon.pokeId)}.</span> {pokemonNameFormat(pokemon.name)}</p>
                                         <TypesList types={pokemon.typeList}/>
                                     </div>
                                     <div className={`h-full flex items-center justify-center ${PokeCard[pokemon.typeList[0]]}`}>
