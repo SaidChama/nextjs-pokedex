@@ -2,7 +2,7 @@ import Layout from "../components/Layout"
 import Link from 'next/link'
 import { numberFormat, pokemonNameFormat } from "../src/js/format.js"
 import PokeCard from "../styles/pokeCard.module.css"
-import Pokeball from "../components/ShadowPokeballBg"
+import Pokeball from "../components/ShadowPokeballBg.jsx"
 import Image from "next/image"
 import InfiniteScroll from "react-infinite-scroll-component"
 import { useState, useEffect } from "react"
