@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import PokeTabs from "../components/PokeTabs"
 import PokeCard from "../styles/pokeCard.module.css"
-import Pokeball from "../components/ShadowPokeballBg"
+import Pokeball from "../components/ShadowPokeBallBg"
 import { IoChevronBackOutline } from "react-icons/io5"
 import { numberFormat, firstUpper, pokemonNameFormat } from "../src/js/format.js"
 

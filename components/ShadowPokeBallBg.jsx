@@ -2,7 +2,7 @@ import Pokeball from '../styles/shadowPokeball.module.css'
 
 import React from 'react'
 
-export default function ShadowPokeballBg() {
+export default function ShadowPokeBallBg() {
     return (
         <div className={Pokeball.align}>
             <div className={Pokeball.outer}></div>
