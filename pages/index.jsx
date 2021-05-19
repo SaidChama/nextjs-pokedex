@@ -50,8 +50,8 @@ export default function Home({ pokemons }) {
 
     return (
         <Layout title="NextJS Pokedex">
-            <h1 className="text-center">
-                APRENDENDO A USAR REACT E NEXT COM UMA POKEDEX                
+            <h1 className="text-center text-5xl font-bold mb-10 text-gray-800 font-lobster">
+                Pokedex PokeAPI  by: Said           
             </h1>
                 <ul className="flex flex-wrap justify-center">
                 <InfiniteScroll
@@ -73,7 +73,7 @@ export default function Home({ pokemons }) {
                     >
                     {pokes.map((pokemon, index) => (
 
-                    <li key={pokemon.pokeId} className="bg-white w-80 my-2 mx-2 box-border">
+                    <li key={pokemon.pokeId} className="bg-gray-100 w-80 my-2 mx-2 box-border">
                         <div className="bg-gray-100 h-52 flex content-center justify-center border border-black rounded-3xl overflow-hidden">
                             <Link href={`/pokemon?id=${pokemon.pokeId}`}>
                                 <a className={`flex items-center justify-around h-full w-full ${PokeCard[pokemon.typeList[0]]}`}>

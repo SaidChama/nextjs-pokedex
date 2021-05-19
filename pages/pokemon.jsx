@@ -58,7 +58,8 @@ export default function pokemon({ pokemon, abilities, types, species }) {
                         weight={pokemon.weight}
                         height={pokemon.height}
                         abilities={abilities} 
-                        description={species.flavor_text_entries[textId(pokemon.id)].flavor_text}/>
+                        description={species.flavor_text_entries[textId(pokemon.id)].flavor_text}
+                        stats={pokemon.stats.map((poke) => {return poke.base_stat})}/>
                 </div>
             </div>
 

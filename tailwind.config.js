@@ -7,6 +7,9 @@ module.exports = {
 
        '98': '25rem',
        '112' : '26rem'
+      },
+      fontFamily: {
+        lobster: ['Lobster']
       }
     }
   },
