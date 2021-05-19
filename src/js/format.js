@@ -27,7 +27,7 @@ function pokemonNameFormat(name) {
         case 'mime':
             return `${firstUpper(name[0])} ${firstUpper(name[1])}.`
         case 'mr':
-            return `${firstUpper(name[0])} ${firstUpper(name[1])}.`
+            return `${firstUpper(name[0])} ${firstUpper(name[1])}`
         default: 
             return name[0]
     }
