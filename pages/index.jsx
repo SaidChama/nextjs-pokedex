@@ -49,7 +49,7 @@ export default function Home({ pokemons }) {
     }
 
     return (
-        <Layout title="NextJS Pokedex">
+        <Layout title="NextJS Pokedex" bg="bg-white">
             <h1 className="text-center text-5xl font-bold mb-10 text-gray-800 font-lobster">
                 Pokedex PokeAPI  by: Said           
             </h1>

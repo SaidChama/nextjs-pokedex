@@ -27,7 +27,7 @@ export default function pokemon({ pokemon, abilities, types, species }) {
     }
 
     return (
-        <Layout title={firstUpper(pokemonNameFormat(pokemon.name))}>
+        <Layout title={firstUpper(pokemonNameFormat(pokemon.name))} bg="bg-gray-100">
             <div className="flex flex-col items-center justify-center">
                 <div className={`flex flex-col justify-between w-96 border rounded-t-3xl shadow-lg ${PokeCard[types[0]]}`}>
                     <div className="flex items-center justify-around h-16">
