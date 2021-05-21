@@ -45,8 +45,8 @@ export default function PokeTabs({weight, height, abilities, description, stats}
     const toggleTab = (index) => {
         setToggleState(index)
     }
-    return (
 
+    return (
         <div className="flex flex-col w-96 flex-wrap shadow-lg border-box bg-white border rounded-b-3xl">
             <div className="bg-white flex justify-around items-end relative border-box my-2">
                 <div className="bg-gray-400 absolute" style={{height: "2px", width: "99%"}}></div>
@@ -75,7 +75,7 @@ export default function PokeTabs({weight, height, abilities, description, stats}
             <div className={`border-box  ml-5 mb-5 mr-5 mt-2 ${TabStyle.content} ${toggleState === 2 ? TabStyle.contentActive : ''}`}>
                 <h3 className="text-lg font-semibold">Characteristics: </h3>
                 <p className="text-gray-800 font-semibold">Height: <span className="text-black font-semibold">{(height * 0.3048).toFixed(2)} m ({height} ft)</span></p>
-                <p className="text-gray-800 font-semibold">Weight:  <span className="text-black font-semibold">{(weight * 0.453592).toFixed(2)} kg ({weight}) lb</span></p>
+                <p className="text-gray-800 font-semibold">Weight:  <span className="text-black font-semibold">{(weight * 0.453592).toFixed(2)} kg ({weight} lb)</span></p>
                 <h3 className="text-lg font-semibold mt-2">Abilities:</h3>
                 <AbilitiesList abilities={abilities} />
             </div>

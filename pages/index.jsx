@@ -73,17 +73,19 @@ export default function Home({ pokemons }) {
                     >
                     {pokes.map((pokemon, index) => (
 
-                    <li key={pokemon.pokeId} className="bg-gray-100 w-80 my-2 mx-2 box-border">
-                        <div className="bg-gray-100 h-52 flex content-center justify-center border border-black rounded-3xl overflow-hidden">
+                    <li key={pokemon.pokeId} className="bg-white w-80 my-2 mx-2 box-border">
+                        <div className="bg-gray-100 h-52 w-full flex content-center justify-center border border-black rounded-3xl overflow-hidden">
                             <Link href={`/pokemon?id=${pokemon.pokeId}`}>
                                 <a className={`flex items-center justify-around h-full w-full ${PokeCard[pokemon.typeList[0]]}`}>
-                                    <div className="flex flex-col justify-start items-start h-28 box-border z-10">
+                                    <div className="flex flex-col justify-start items-start h-full w-2/3 z-10 border-box pb-10 pt-4">
                                         <p className="capitalize text-white font-semibold text-2xl"><span className="font-bold text-white">{numberFormat(pokemon.pokeId)}.</span> {pokemonNameFormat(pokemon.name)}</p>
                                         <TypesList types={pokemon.typeList}/>
                                     </div>
-                                    <div className={`h-full flex items-center justify-center ${PokeCard[pokemon.typeList[0]]}`}>
-                                        <Pokeball/>
-                                        <div className="absolute mr-20 mt-10">
+                                    <div className={`h-full flex items-center justify-center relative`}>
+                                        <div className={`absolute h-36 w-36 top-5 -right-3 ${PokeCard[pokemon.typeList[0]]}`}>
+                                            <Pokeball/>
+                                        </div>
+                                        <div className="absolute top-11 -right-1">
                                             <Image layout="fixed" src={pokemon.image} alt={pokemonNameFormat(pokemon.name)} width={160} height={160}/>
                                         </div>
                                     </div>

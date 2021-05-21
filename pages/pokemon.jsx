@@ -29,26 +29,26 @@ export default function pokemon({ pokemon, abilities, types, species }) {
     return (
         <Layout title={firstUpper(pokemonNameFormat(pokemon.name))} bg="bg-gray-100">
             <div className="flex flex-col items-center justify-center">
-                <div className={`flex flex-col justify-between w-96 border rounded-t-3xl shadow-lg ${PokeCard[types[0]]}`}>
+                <div className={`flex flex-col justify-between w-96 border rounded-t-3xl shadow-lg relative ${PokeCard[types[0]]}`}>
                     <div className="flex items-center justify-around h-16">
                         <div className="mt-2 border-white border-0 rounded-md hover:border-2">
                             <Link href="/">
-                                <a className="text-white font-bold text-3xl "><IoChevronBackOutline /></a>
+                                <a className="text-white font-bold text-3xl"><IoChevronBackOutline /></a>
                             </Link>
                         </div>
                         <h1 className="text-center font-semibold text-4xl capitalize text-white z-20">
                             {pokemonNameFormat(pokemon.name)} #{numberFormat(pokemon.id)}
                         </h1>
                     </div>
-                    <div className="h-48 flex items-center justify-center">
-                        <div className={`absolute mb-36 mr-32 ${PokeCard[types[0]]}`}>
+                    <div className="h-48 flex items-center justify-center relative">
+                        <div className={`absolute h-40 w-40 ${PokeCard[types[0]]}`}>
                             <Pokeball />
                         </div>
-                        <div className="absolute mr-28">
+                        <div className="absolute left-14">
                             <Image src={pokemon.sprites.versions['generation-vii']['ultra-sun-ultra-moon'].front_default} alt={pokemon.name} 
                                 height={200} width={200}/>
                         </div>
-                        <div className="absolute ml-64">
+                        <div className="absolute right-5">
                             <TypesList types={types} />
                         </div>
                     </div>
