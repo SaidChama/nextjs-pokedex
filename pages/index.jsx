@@ -75,7 +75,8 @@ export default function Home({ pokemons }) {
 
                     <li key={pokemon.pokeId} className="bg-white w-80 my-2 mx-2 box-border">
                         <div className="bg-gray-100 h-52 w-full flex content-center justify-center border border-black rounded-3xl overflow-hidden">
-                            <Link href={`/pokemon?id=${pokemon.pokeId}`}>
+                            {/* <Link href={`/pokemon?id=${pokemon.pokeId}`}> */}
+                            <Link href={`/pokemon/${pokemon.pokeId}`}>
                                 <a className={`flex items-center justify-around h-full w-full ${PokeCard[pokemon.typeList[0]]}`}>
                                     <div className="flex flex-col justify-start items-start h-full w-2/3 z-10 border-box pb-10 pt-4">
                                         <p className="capitalize text-white font-semibold text-2xl"><span className="font-bold text-white">{numberFormat(pokemon.pokeId)}.</span> {pokemonNameFormat(pokemon.name)}</p>

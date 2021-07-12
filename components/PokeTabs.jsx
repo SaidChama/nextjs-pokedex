@@ -63,10 +63,6 @@ export default function PokeTabs({weight, height, abilities, description, stats}
                         <h2 className="mx-1 text-lg"> Stats</h2>
                         <div className={toggleState === 3 ? TabStyle.tabActive : ''}></div>
                     </div>
-                    <div className="flex flex-col justify-between items-center cursor-pointer relative h-8" onClick={() => toggleTab(4)}>
-                        <h2 className="mx-1 text-lg">Evolutions</h2>
-                        <div className={toggleState === 4 ? TabStyle.tabActive : ''}></div>
-                    </div>
                 </div>
             </div>
             <div className={`border-box  ml-5 mb-5 mr-5 mt-2 ${TabStyle.content} ${toggleState === 1 ? TabStyle.contentActive : ''}`}>
